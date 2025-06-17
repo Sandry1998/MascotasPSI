@@ -31,15 +31,16 @@
     </style>
 </head>
 <body>
-<div class="container-fluid">
+<div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
     <h1 class="titulo-principal-sombreado-hover"><strong>VETERINARIA SANTOM</strong></h1>
-    <div class="row justify-content-md-end mt-5">
+    <img src="/images/animal.png" alt="huella" style="height: 100px; margin: 40px;">
+</div>
+<div class="row justify-content-md-end mt-5">
         <div class="col-md-2">
 <a th:href="@{/crud}" class="btn btn-warning px-4">ÁREA PRIVADA</a>
 </div>
-    </div>
 <div  style="display: flex; justify-content: center;">
-    <img th:src="@{images/bebes-perros-1.jpg}" alt="Mascotas" style="width: 800px; height: auto;">
+    <img th:src="@{images/bebes-perros-1.jpg}" alt="Mascotas" style="width: 600px; height: auto;">
 </div>
 </div>
 </body>
