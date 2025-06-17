@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Datos Mascotas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+    .form-container:hover {
+      transform: scale(1.03);
+    }
+    .form-control:focus {
+      border-color: #5bc0de;
+      box-shadow: 0 0 8px #5bc0de;
+    }
+    .input-group-text {
+      background-color: #5bc0de;
+      color: white;
+      border: none;
+      border-radius: 0.375rem 0 0 0.375rem;
+    }
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.25);
+      border: 2px solid #5bc0de;
+      color: #5bc0de;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 50px;
+    }
+    .btn-glass:hover {
+      background: #5bc0de;
+      color: white;
+      box-shadow: 0 4px 15px rgba(91, 192, 222, 0.6);
+    }
+    h1 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .feedback-message {
+      margin-top: 15px;
+      font-weight: 500;
+      color: #d9534f; /* rojo para error */
+      display: none;
+    }
+    .feedback-message.success {
+      color: #5cb85c; /* verde para éxito */
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container shadow-sm">
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <span style="font-size: 30px; font-weight: bold;">INICIO SESIÓN</span>
+    <img src="/images/perro.png" alt="Perro pequeño" style="height: 80px;">
+  </div>
+
+  <form th:action="@{/login}" method="post" novalidate>
+    <div class="mb-3">
+      <label for="usuario" class="form-label"><strong>Usuario</strong></label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+        <input
+                type="text"
+                id="usuario"
+                name="username"
+                class="form-control"
+                placeholder="Ingrese su usuario"
+                required
+                autofocus
+        />
+        <div class="invalid-feedback">Por favor, ingrese un usuario válido.</div>
+      </div>
+    </div>
+    <div class="mb-4">
+      <label for="password" class="form-label"><strong>Contraseña</strong></label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+        <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="Ingrese su contraseña"
+                required
+        />
+        <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
+      </div>
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-glass btn-lg px-5">Entrar</button>
+    </div>
+    <p class="feedback-message" id="login-feedback"></p>
+    <div th:if="${param.error}" class="">
+    El usuario o contraseña no es válido
+    </div>
+    <div th:if="${param.logout}" class="">
+    Sesión de usuario cerrada!
+    </div>
+</form>
+</div>
+</body>
+</html>

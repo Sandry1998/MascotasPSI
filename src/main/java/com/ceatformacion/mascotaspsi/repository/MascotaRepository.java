@@ -1,4 +1,9 @@
 package com.ceatformacion.mascotaspsi.repository;
 
-public interface MascotaRepository {
+import com.ceatformacion.mascotaspsi.model.Mascotas;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface MascotaRepository extends JpaRepository <Mascotas, Integer> {
 }
