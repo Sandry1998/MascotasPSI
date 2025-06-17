@@ -10,10 +10,29 @@
             background:linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        .titulo-principal-sombreado-hover {
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem; /* Ajusta según prefieras */
+            color: #007BFF; /* Azul brillante Bootstrap */
+            text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.6); /* Sombra azul */
+            margin-top: 60px;
+            margin-bottom: 0;
+            letter-spacing: 1px;
+            transition: all 0.3s ease-in-out; /* Suaviza el cambio */
+            cursor: pointer; /* Cambia el cursor al pasar el ratón */
+        }
+        .titulo-principal-sombreado-hover:hover{
+            color: #B266FF; /* Lila */
+            text-shadow: 2px 2px 12px rgba(178, 102, 255, 0.7);
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+        }
+
     </style>
 </head>
 <body>
 <div class="container-fluid">
+    <h1 class="titulo-principal-sombreado-hover"><strong>VETERINARIA SANTOM</strong></h1>
     <div class="row justify-content-md-end mt-5">
         <div class="col-md-2">
 <a th:href="@{/crud}" class="btn btn-warning px-4">ÁREA PRIVADA</a>
