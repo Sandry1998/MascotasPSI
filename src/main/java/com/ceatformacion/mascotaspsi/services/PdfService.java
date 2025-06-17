@@ -70,8 +70,8 @@ public ByteArrayInputStream exportarMascotas(List<Mascotas> mascotas) {
 
     }catch (Exception e){
 
-    return new ByteArrayOutputStream(salida.toByteArray());
     }
+    return new ByteArrayInputStream(salida.toByteArray());
 
 }
 
