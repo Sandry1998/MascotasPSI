@@ -10,34 +10,78 @@
       background:linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+    .icon-buttons-fixed {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      border: none;
+      background: none;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-icon img {
+      width: 40px;
+      height: 40px;
+    }
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="row justify-content-md-end mt-5">
-    <div class="col-md-2">
-      <form th:action="@{/logout}" method="post">
-        <button type="submit" class="btn btn-danger px-4">
-          <img src="/images/emergency-exit.png" alt="Botón con imagen" style="width: 40px; height: 40px;">
-        </button>
+<!-- Botones fijos arriba a la derecha -->
+<div class="icon-buttons-fixed">
+  <a th:href="@{/pdf}" method="post" class="btn-icon">
+    <img src="/images/icons8-pdf-64.png" alt="boton pdf">
+  </a>
+
+  <form th:action="@{/logout}" method="post">
+    <button type="submit" class="btn-icon">
+      <img src="/images/emergency-exit.png" alt="Botón logout">
+    </button>
+  </form>
+
+  <a th:href="@{/altaUsuario}" method="post" class="btn-icon">
+    <img src="/images/add-group.png" alt="Botón alta">
+  </a>
+</div>
+
+<!-- Contenido centrado -->
+<div class="container text-center mt-5">
+
+  <h1 class="mb-4"><strong>Listado de Mascotas</strong></h1>
+
+  <img src="/images/perro.png" alt="Perro pequeño"
+       style="height: 200px; width: auto; max-width: 100%;" class="mb-4">
+
+  <!-- Botón nueva mascota y búsqueda -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-3 mb-2">
+      <a th:href="@{/formulario}" class="btn btn-primary w-100">NUEVA MASCOTA</a>
+    </div>
+    <div class="col-md-4">
+      <form th:action="@{/buscar}" method="get" class="d-flex">
+        <input type="text" name="nombre" class="form-control me-2" placeholder="Buscar por nombre">
+        <button type="submit" class="btn btn-primary">🔍</button>
       </form>
     </div>
-    <div class="col-md-2">
-      <a th:href="@{/altaUsuario}" methods="post">
-        <img src="/images/add-group.png" alt="Botón alta" style="width: 40px; height: 40px;">
-      </a>
-    </div>
   </div>
-  <h1 style="text-align: center; margin-top: 40px"><strong>Listado de Mascotas</strong></h1>
-  <img src="/images/perro.png" alt="Perro pequeño"
-       style="display: block; margin: 10px auto 0 auto; height: 200px;">
-  <div class="row">
-    <div class="col-2">
-      <a th:href="@{/formulario}" class="btn btn-primary btn-sm mt-5 px-3 mb-3">NUEVA MASCOTA</a>
-    </div>
-  </div>
-  <table class="table table-striped">
-      <tr class="table-info">
+
+  <!-- Tabla de mascotas -->
+  <div class="table-responsive">
+    <table class="table table-striped text-center">
+      <thead class="table-info">
+      <tr>
         <th>Nombre</th>
         <th>Raza</th>
         <th>Descripción</th>
@@ -47,6 +91,8 @@
         <th>DNI Dueño</th>
         <th sec:authorize="hasRole('Admin')">Acciones</th>
       </tr>
+      </thead>
+      <tbody>
       <tr th:each="mascotas : ${mascotasParaCrud}">
         <td th:text="${mascotas.nombre}"></td>
         <td th:text="${mascotas.raza}"></td>
@@ -56,15 +102,19 @@
         <td th:text="${mascotas.nombreAmo}"></td>
         <td th:text="${mascotas.dniAmo}"></td>
         <td>
-          <a th:href="@{'editar/'+ ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning">✍️Editar</a>
-          <a th:href="@{'borrar/' + ${mascotas.getId()}}"sec:authorize="hasRole('Admin')" class="btn btn-danger" onclick="return confirm('¿Estas seguro que quieres borrar este cliente?')">🗑️Eliminar</a>
+          <a th:href="@{'editar/'+ ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍️Editar</a>
+          <a th:href="@{'borrar/' + ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-danger" onclick="return confirm('¿Estas seguro que quieres borrar este cliente?')">🗑️Eliminar</a>
         </td>
       </tr>
+      </tbody>
     </table>
+  </div>
 </div>
+
 <script>
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   const tooltipList = [tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
+
 </body>
 </html>
