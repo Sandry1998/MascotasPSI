@@ -2,11 +2,13 @@ package com.ceatformacion.mascotaspsi.services;
 
 import com.ceatformacion.mascotaspsi.model.Mascotas;
 import com.lowagie.text.*;
+import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
@@ -48,16 +50,21 @@ public ByteArrayInputStream exportarMascotas(List<Mascotas> mascotas) {
 
         //definimos la fuente del titulo de la tabla
         Font encabezadoFont = FontFactory.getFont(FontFactory.HELVETICA_BOLDOBLIQUE, 18);
+        table.setHeaderRows(1);
+        Color color=new Color(201,201,201,1);
+        PdfPCell headerCell = new PdfPCell();
+        headerCell.setBackgroundColor(color);
+        headerCell.setBorderColor(color);
 
         //Añadir los encabezados a la tabla
-        table.addCell(new PdfPCell(new Phrase("Id",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("Nombre",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("Raza",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("Descripción",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("Edad",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("Peso",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("Nombre Dueño",encabezadoFont)));
-        table.addCell(new PdfPCell(new Phrase("DNI Dueño",encabezadoFont)));
+        table.addCell(new PdfPCell(new Phrase("Id",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("Nombre",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("Raza",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("Descripción",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("Edad",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("Peso",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("Nombre Dueño",encabezadoFont)){{setBackgroundColor(color);}});
+        table.addCell(new PdfPCell(new Phrase("DNI Dueño",encabezadoFont)){{setBackgroundColor(color);}});
 
         //Añadir el contenido recorriendo un array
         //addCell solo puede enviar datos tipo String...int edad....String.valueOf

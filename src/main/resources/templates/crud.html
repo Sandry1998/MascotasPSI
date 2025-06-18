@@ -62,7 +62,7 @@
   <h1 class="mb-4"><strong>Listado de Mascotas</strong></h1>
 
 
-  <img src="/images/perro.png" alt="Perro pequeño"
+  <img src="/images/perro1.png" alt="Perro pequeño"
        style="height: 200px; width: auto; max-width: 100%;" class="mb-4">
 
   <!-- Botón nueva mascota y búsqueda -->
@@ -83,14 +83,14 @@
     <table class="table table-striped text-center">
       <thead class="table-info">
       <tr>
-        <th>Nombre</th>
-        <th>Raza</th>
-        <th>Descripción</th>
-        <th>Edad</th>
-        <th>Peso</th>
-        <th>Nombre Dueño</th>
-        <th>DNI Dueño</th>
-        <th sec:authorize="hasRole('Admin')">Acciones</th>
+        <th class="table-danger">Nombre</th>
+        <th class="table-danger">Raza</th>
+        <th class="table-danger">Descripción</th>
+        <th class="table-danger">Edad</th>
+        <th class="table-danger">Peso</th>
+        <th class="table-danger">Nombre Dueño</th>
+        <th class="table-danger">DNI Dueño</th>
+        <th class="table-danger" sec:authorize="hasRole('Admin')">Acciones</th>
       </tr>
       </thead>
       <tbody>
@@ -105,6 +105,8 @@
         <td>
           <a th:href="@{'editar/'+ ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍️Editar</a>
           <a th:href="@{'borrar/' + ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-danger" onclick="return confirm('¿Estas seguro que quieres borrar este cliente?')">🗑️Eliminar</a>
+          <a th:href="@{'/consulta/'+ ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍📄Historial</a>
+
         </td>
       </tr>
       </tbody>
