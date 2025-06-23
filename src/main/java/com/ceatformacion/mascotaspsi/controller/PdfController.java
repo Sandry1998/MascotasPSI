@@ -1,14 +1,13 @@
 package com.ceatformacion.mascotaspsi.controller;
 
 
-import com.ceatformacion.mascotaspsi.model.Mascotas;
+import com.ceatformacion.mascotaspsi.model.Mascota;
 import com.ceatformacion.mascotaspsi.repository.MascotaRepository;
 import com.ceatformacion.mascotaspsi.services.PdfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +29,7 @@ public class PdfController {
     @GetMapping("/pdf")
     public ResponseEntity<byte[]> exportarPdf() {
         //generar la lista
-        List<Mascotas> mascotas = mascotaRepository.findAll();
+        List<Mascota> mascotas = mascotaRepository.findAll();
         //Los flujos o datos se convierte en byte y lo que se va a generar
         ByteArrayInputStream pfdStream= pdfService.exportarMascotas(mascotas);
 

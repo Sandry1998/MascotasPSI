@@ -18,10 +18,10 @@ public class Historial {
     private String tratamiento;
     private String observaciones;
 
-    //Si necesito conectarlo con Mascotas
+    //Si necesito conectarlo con Mascota
     @ManyToOne
     @JoinColumn(name = "id",nullable = false)
-    private Mascotas mascotas;
+    private Mascota mascota;
 
     public int getId_historial() {
         return id_historial;
@@ -63,12 +63,12 @@ public class Historial {
         this.observaciones = observaciones;
     }
 
-    public Mascotas getMascotas() {
-        return mascotas;
+    public Mascota getMascota() {
+        return mascota;
     }
 
-    public void setMascotas(Mascotas mascotas) {
-        this.mascotas = mascotas;
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
     }
 
     @Override
@@ -79,6 +79,6 @@ public class Historial {
                 "\nmotivoConsulta: " + motivoConsulta +
                 "\ntratamiento: " + tratamiento +
                 "\nobservaciones: " + observaciones +
-                "\nmascotas: " + mascotas;
+                "\nmascota: " + mascota;
     }
 }

@@ -2,7 +2,7 @@ package com.ceatformacion.mascotaspsi.controller;
 
 
 import com.ceatformacion.mascotaspsi.model.Historial;
-import com.ceatformacion.mascotaspsi.model.Mascotas;
+import com.ceatformacion.mascotaspsi.model.Mascota;
 import com.ceatformacion.mascotaspsi.repository.HistorialRepository;
 import com.ceatformacion.mascotaspsi.repository.MascotaRepository;
 import com.ceatformacion.mascotaspsi.services.HistorialService;
@@ -52,8 +52,8 @@ public class HistorialController {
     //Controlar la vista del formulario e historial
     @GetMapping("/consulta/{id}")
     public String getHistorialById(@PathVariable int id, Model model) {
-        Mascotas mascota = mascotaRepository.findById(id).orElseThrow();
-        List<Historial> historial=historialRepository.findByMascotasIdMascota(id);
+        Mascota mascota = mascotaRepository.findById(id).orElseThrow();
+        List<Historial> historial=historialRepository.findByMascotaId(id);
         model.addAttribute("historial", historial);
         model.addAttribute("mascota", mascota);
         model.addAttribute("nuevaVisita", new Historial());
@@ -63,8 +63,8 @@ public class HistorialController {
     //Guardar la visita
     @PostMapping("/consulta/{id}")
     public String registrarVisita(@PathVariable int id, @ModelAttribute("nuevaVisita") Historial nuevaVisita) {
-        Mascotas mascota = mascotaRepository.findById(id).orElseThrow();
-        nuevaVisita.setMascotas(mascota);
+        Mascota mascota = mascotaRepository.findById(id).orElseThrow();
+        nuevaVisita.setMascota(mascota);
         historialRepository.save(nuevaVisita);
         return "redirect:/consulta/" + id;
     }

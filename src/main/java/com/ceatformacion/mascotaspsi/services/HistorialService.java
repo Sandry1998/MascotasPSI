@@ -20,7 +20,7 @@ public class HistorialService {
 
     //Creamos un metodo que obtiene el historial x mascota
     public List<Historial> obtenerHistorialXMascota(int id) {
-        return historialRepository.findByMascotasIdMascota(id);
+        return historialRepository.findByMascotaId(id);
     }
 
     //Guardar la entrada al historial

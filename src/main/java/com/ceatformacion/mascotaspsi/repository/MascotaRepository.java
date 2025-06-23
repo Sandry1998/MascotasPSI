@@ -1,14 +1,14 @@
 package com.ceatformacion.mascotaspsi.repository;
 
 
-import com.ceatformacion.mascotaspsi.model.Mascotas;
+import com.ceatformacion.mascotaspsi.model.Mascota;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface MascotaRepository extends JpaRepository<Mascotas, Integer> {
-   List<Mascotas> findByNombreContainingIgnoreCase(String nombre);
+public interface MascotaRepository extends JpaRepository<Mascota, Integer> {
+   List<Mascota> findByNombreContainingIgnoreCase(String nombre);
 
 }

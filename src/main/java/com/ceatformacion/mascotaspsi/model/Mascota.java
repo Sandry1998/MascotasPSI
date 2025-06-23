@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Mascotas {
+public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -85,7 +85,7 @@ public class Mascotas {
 
     @Override
     public String toString() {
-        return "Mascotas-> " +
+        return "Mascota-> " +
                 "\nId: " + id +
                 "\nNombre: " + nombre +
                 "\nraza: " + raza +

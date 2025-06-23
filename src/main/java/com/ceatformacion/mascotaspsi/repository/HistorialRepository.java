@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface HistorialRepository extends JpaRepository<Historial, Integer> {
-    List<Historial> findByMascotasIdMascota(int mascotaIdMascota);
+    List<Historial> findByMascotaId(int id);
 
 }

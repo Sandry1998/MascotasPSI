@@ -1,6 +1,6 @@
 package com.ceatformacion.mascotaspsi.controller;
 
-import com.ceatformacion.mascotaspsi.model.Mascotas;
+import com.ceatformacion.mascotaspsi.model.Mascota;
 import com.ceatformacion.mascotaspsi.repository.MascotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,18 +17,18 @@ public class MascotaController {
 
     @GetMapping("/formulario")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("mascotas", new Mascotas());
+        model.addAttribute("mascotas", new Mascota());
         return "formulario";
 
     }
     @PostMapping("/crud")
-    public String leerFormulario(@ModelAttribute Mascotas mascotaFormulario , Model model) {
+    public String leerFormulario(@ModelAttribute Mascota mascotaFormulario , Model model) {
         mascotaRepository.save(mascotaFormulario);
         return "redirect:/crud";
     }
     @GetMapping("/crud")
     public String mostrarMascotas(Model model) {
-        model.addAttribute("mascotasParaCrud",mascotaRepository.findAll());
+        model.addAttribute("mascotaParaCrud",mascotaRepository.findAll());
         return "crud";
     }
     @GetMapping("/editar/{id}")
@@ -37,7 +37,7 @@ public class MascotaController {
         //recibimos el id mediante la url
         //se busca en la bbdd
         //se almacena todos los datos en un objeto tipo cliente
-        Mascotas mascota = mascotaRepository.findById(id).get();//BUSCA POR EL ID ENVIADO POR LA URL...
+        Mascota mascota = mascotaRepository.findById(id).get();//BUSCA POR EL ID ENVIADO POR LA URL...
         model.addAttribute("mascotas",mascota);
         return "formulario";
 
@@ -51,8 +51,8 @@ public class MascotaController {
 
     @GetMapping("/buscar")
     public String buscarPorNombre(@RequestParam String nombre, Model model) {
-        List<Mascotas> resultado = mascotaRepository.findByNombreContainingIgnoreCase(nombre);
-        model.addAttribute("mascotasParaCrud",resultado);
+        List<Mascota> resultado = mascotaRepository.findByNombreContainingIgnoreCase(nombre);
+        model.addAttribute("mascotaParaCrud",resultado);
         return "crud";
     }
     

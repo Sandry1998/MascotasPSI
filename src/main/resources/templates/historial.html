@@ -4,10 +4,127 @@
     <meta charset="UTF-8">
     <title>Consulta Veterinaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px 20px;
+}
+
+/* Contenedor general */
+.container {
+max-width: 1000px;
+margin: auto;
+}
+
+/* Tarjetas estilo glass */
+.card {
+background: rgba(255, 255, 255, 0.85);
+border-radius: 15px;
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+border: none;
+margin-bottom: 30px;
+transition: transform 0.3s ease;
+}
+
+.card:hover {
+transform: scale(1.01);
+}
+
+/* Cabeceras */
+.card-header {
+    background: linear-gradient(135deg, #5bc0de, #48a9c5);
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px 15px 0 0;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+    border: none;
+}
+
+/* Tablas */
+.table {
+margin-bottom: 0;
+}
+
+.table th {
+background-color: #f2f9fc;
+color: #333;
+font-weight: 600;
+text-align: center;
+}
+
+.table td, .table th {
+vertical-align: middle;
+text-align: center;
+}
+
+/* Formulario */
+.form-label {
+font-weight: 600;
+color: #333;
+}
+
+.form-control {
+border-radius: 10px;
+border: 1px solid #ccc;
+transition: all 0.2s ease-in-out;
+}
+
+.form-control:focus {
+border-color: #5bc0de;
+box-shadow: 0 0 8px rgba(91, 192, 222, 0.5);
+}
+
+/* Botones */
+.btn-success {
+background: rgba(91, 192, 222, 0.25);
+border: 2px solid #5bc0de;
+color: #5bc0de;
+font-weight: 600;
+border-radius: 50px;
+transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+background: #5bc0de;
+color: white;
+box-shadow: 0 4px 15px rgba(91, 192, 222, 0.6);
+}
+
+/* Feedback o mensajes */
+.feedback-message {
+margin-top: 15px;
+font-weight: 500;
+color: #d9534f; /* rojo para error */
+display: none;
+}
+
+.feedback-message.success {
+color: #5cb85c; /* verde para éxito */
+display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-header {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+</style>
 </head>
 <body>
-<header th:insert="fragments/headerSecurity.html :: headerSecurity" class="bg-light container-fluid"></header>
-
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">Datos del Paciente</div>
@@ -57,8 +174,10 @@
                         <label for="observaciones" class="form-label">Observaciones</label>
                         <textarea class="form-control" id="observaciones" rows="3" th:field="*{observaciones}"></textarea>
                     </div>
+                    <div class="text-center mt-4">
                     <button type="submit" class="btn btn-success">Guardar Visita</button>
                     <a th:href="@{/crud}" class="btn btn-success">Volver al Listado</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -91,8 +210,6 @@
             </div>
         </div>
     </div>
-
-    <footer th:insert="fragments/footer.html :: footer"></footer>
 </div>
 </body>
 </html>

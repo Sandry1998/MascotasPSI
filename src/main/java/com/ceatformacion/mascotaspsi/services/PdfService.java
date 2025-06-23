@@ -1,6 +1,6 @@
 package com.ceatformacion.mascotaspsi.services;
 
-import com.ceatformacion.mascotaspsi.model.Mascotas;
+import com.ceatformacion.mascotaspsi.model.Mascota;
 import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPCell;
@@ -19,7 +19,7 @@ public class PdfService {
 
 //1. crear un metodo que genera un pdf con la información de una lista de mascotas
 
-public ByteArrayInputStream exportarMascotas(List<Mascotas> mascotas) {
+public ByteArrayInputStream exportarMascotas(List<Mascota> mascotas) {
 
     //2. creamos el documento pdf con formato A4 horizontal
 
@@ -33,7 +33,7 @@ public ByteArrayInputStream exportarMascotas(List<Mascotas> mascotas) {
     //Definir la fuente que deseamos
         Font tituloFont= FontFactory.getFont(FontFactory.HELVETICA_BOLDOBLIQUE, 18);
         //Crear el titulo al documento
-        Paragraph titulo = new Paragraph("Listado de Mascotas Clientes", tituloFont);
+        Paragraph titulo = new Paragraph("Listado de Mascota Clientes", tituloFont);
         //Centre el título en el documento
         titulo.setAlignment(Element.ALIGN_CENTER);
         //Añada el titulo al documento
@@ -68,7 +68,7 @@ public ByteArrayInputStream exportarMascotas(List<Mascotas> mascotas) {
 
         //Añadir el contenido recorriendo un array
         //addCell solo puede enviar datos tipo String...int edad....String.valueOf
-        for(Mascotas m : mascotas){
+        for(Mascota m : mascotas){
             table.addCell(String.valueOf(m.getId()));
             table.addCell(String.valueOf(m.getNombre()));
             table.addCell(String.valueOf(m.getRaza()));

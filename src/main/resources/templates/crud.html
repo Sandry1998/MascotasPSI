@@ -94,18 +94,18 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="mascotas : ${mascotasParaCrud}">
-        <td th:text="${mascotas.nombre}"></td>
-        <td th:text="${mascotas.raza}"></td>
-        <td th:text="${mascotas.descripcion}"></td>
-        <td th:text="${mascotas.edad}"></td>
-        <td th:text="${mascotas.peso}"></td>
-        <td th:text="${mascotas.nombreAmo}"></td>
-        <td th:text="${mascotas.dniAmo}"></td>
+      <tr th:each="mascota : ${mascotaParaCrud}">
+        <td th:text="${mascota.nombre}"></td>
+        <td th:text="${mascota.raza}"></td>
+        <td th:text="${mascota.descripcion}"></td>
+        <td th:text="${mascota.edad}"></td>
+        <td th:text="${mascota.peso}"></td>
+        <td th:text="${mascota.nombreAmo}"></td>
+        <td th:text="${mascota.dniAmo}"></td>
         <td>
-          <a th:href="@{'editar/'+ ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍️Editar</a>
-          <a th:href="@{'borrar/' + ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-danger" onclick="return confirm('¿Estas seguro que quieres borrar este cliente?')">🗑️Eliminar</a>
-          <a th:href="@{'/consulta/'+ ${mascotas.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍📄Historial</a>
+          <a th:href="@{'editar/'+ ${mascota.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍️Editar</a>
+          <a th:href="@{'borrar/' + ${mascota.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-danger" onclick="return confirm('¿Estas seguro que quieres borrar este cliente?')">🗑️Eliminar</a>
+          <a th:href="@{'/consulta/'+ ${mascota.getId()}}" sec:authorize="hasRole('Admin')" class="btn btn-warning mb-1">✍📄Historial</a>
 
         </td>
       </tr>
